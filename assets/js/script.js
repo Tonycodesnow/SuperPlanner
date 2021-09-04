@@ -1,6 +1,5 @@
 // var to store loop arrays
-var eventData = [
-    {
+var eventData = [{
         hour: "9",
         daytime: "am",
         altHour: 9
@@ -9,7 +8,6 @@ var eventData = [
         hour: "10",
         daytime: "am",
         altHour: 10
-
     },
     {
         hour: "11",
@@ -46,61 +44,60 @@ var eventData = [
         daytime: "pm",
         altHour: 17
     },
-    
+
 ]
 
-function addTimeBlock() {
-    for (var i = 0; i < eventData.length; i++) {
-        var time = eventData[i].hour+eventData[i].daytime
-        var timeBlock = $("<div>").addClass("row");
+ var showTime = moment().format("dddd, MMMM Do YYYY")
 
-        var hour = $("<div>").addClass("col-md-2 hour").text(time);
-        var description = $("<textarea>").addClass("description col-md-9").attr("id", eventData[i].altHour);
+// moment.format("dddd, MMMM Do YYYY")
+//  set time to 
+// function showDate() {
+//     var newtime
+// }
 
-        var saveBtn = $("<button>").addClass("saveBtn col-md-1");
-        
-        var icon = $("<i>").addClass("fas fa-save");
-        saveBtn.append(icon)
-        timeBlock.append(hour)
-        timeBlock.append(description)
-        timeBlock.append(saveBtn)
-        // change color here
-
-        $(".container").append(timeBlock)
-    }
-}
-// data for header date
-var now = moment()
-
-
-
-// load header date
-
-var displayTime = function(Time) {
+$(document).ready(function () {
     
-}
-// save data for local storage
-// need to know what i can save
-$(".saveBtn").on("click", function(){
-    var value = $(this).siblings(".description").val()
-    var time = $(this).siblings(".description").attr("id")
-    localStorage.setItem(time,value)
+    console.log(showTime)
+    $("#nowTime").text(showTime);
+    // create visuals for scheduler time, description and save btn icon
+    function addTimeBlock() {
+        for (var i = 0; i < eventData.length; i++) {
+            var time = eventData[i].hour + eventData[i].daytime
+            var timeBlock = $("<div>").addClass("row");
+
+            var hour = $("<div>").addClass("col-md-2 hour").text(time);
+            var description = $("<textarea>").addClass("description col-md-9 " + eventData[i].altHour).attr("id", eventData[i].altHour);
+
+            var saveBtn = $("<button>").addClass("saveBtn col-md-1");
+
+            var icon = $("<i>").addClass("fas fa-save");
+            saveBtn.append(icon)
+            timeBlock.append(hour)
+            timeBlock.append(description)
+            timeBlock.append(saveBtn)
+            // change color here
+
+            $(saveBtn).on("click", function () {
+                console.log("string, click")
+                var value = $(this).siblings(".description").val()
+                var time = $(this).siblings(".description").attr("id")
+                console.log(time, value)
+                localStorage.setItem(time, value)
+            })
+            
+            $(".container").append(timeBlock)
+        }
+    }
+    addTimeBlock()
+    // set data from local storage to view
+    
+    $(".9").val(localStorage.getItem("9"))
+    $(".10").val(localStorage.getItem("10"))
+    $(".11").val(localStorage.getItem("11"))
+    $(".12").val(localStorage.getItem("12"))
+    $(".1").val(localStorage.getItem("1"))
+    $(".2").val(localStorage.getItem("2"))
+    $(".3").val(localStorage.getItem("3"))
+    $(".4").val(localStorage.getItem("4"))
+    $(".5").val(localStorage.getItem("5"))
 })
-
-// set data from local storage to view
-
-$(".9").val(localStorage.getItem("9"))
-// make a loop or write out multiple times
-// save button
-
-
-
-// scheduler data
-
-
-
-// create visuals for scheduler body
-
-
-addTimeBlock()
-// create save button
