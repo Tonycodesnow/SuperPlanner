@@ -47,13 +47,9 @@ var eventData = [{
 
 ]
 
- var showTime = moment().format("dddd, MMMM Do YYYY")
+var showTime = moment().format("dddd, MMMM Do YYYY")
 
-// moment.format("dddd, MMMM Do YYYY")
-//  set time to 
-// function showDate() {
-//     var newtime
-// }
+var currentTime = moment().format("H")
 
 $(document).ready(function () {
     
@@ -75,8 +71,8 @@ $(document).ready(function () {
             timeBlock.append(hour)
             timeBlock.append(description)
             timeBlock.append(saveBtn)
-            // change color here
-
+            
+            
             $(saveBtn).on("click", function () {
                 console.log("string, click")
                 var value = $(this).siblings(".description").val()
@@ -86,7 +82,15 @@ $(document).ready(function () {
             })
             
             $(".container").append(timeBlock)
+            // change color here
+            if (eventData[i].altHour < currentTime ){
+                description.addClass("past")
+            } else if (eventData[i].altHour === +currentTime) {
+                description.addClass("present")
+            } else description.addClass("future")
+            console.log(eventData[i].altHour,currentTime)
         }
+        
     }
     addTimeBlock()
     // set data from local storage to view
