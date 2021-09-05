@@ -22,38 +22,38 @@ var eventData = [{
     {
         hour: "1",
         daytime: "pm",
-        altHour: 13
+        altHour: 1
     },
     {
         hour: "2",
         daytime: "pm",
-        altHour: 14
+        altHour: 2
     },
     {
         hour: "3",
         daytime: "pm",
-        altHour: 15
+        altHour: 3
     },
     {
         hour: "4",
         daytime: "pm",
-        altHour: 16
+        altHour: 4
     },
     {
         hour: "5",
         daytime: "pm",
-        altHour: 17
+        altHour: 5
     },
 
 ]
-
+// present time 
 var showTime = moment().format("dddd, MMMM Do YYYY")
-
+// current time at the
 var currentTime = moment().format("H")
 
 $(document).ready(function () {
     
-    console.log(showTime)
+    
     $("#nowTime").text(showTime);
     // create visuals for scheduler time, description and save btn icon
     function addTimeBlock() {
@@ -72,15 +72,6 @@ $(document).ready(function () {
             timeBlock.append(description)
             timeBlock.append(saveBtn)
             
-            
-            $(saveBtn).on("click", function () {
-                console.log("string, click")
-                var value = $(this).siblings(".description").val()
-                var time = $(this).siblings(".description").attr("id")
-                console.log(time, value)
-                localStorage.setItem(time, value)
-            })
-            
             $(".container").append(timeBlock)
             // change color here
             if (eventData[i].altHour < currentTime ){
@@ -89,6 +80,15 @@ $(document).ready(function () {
                 description.addClass("present")
             } else description.addClass("future")
             console.log(eventData[i].altHour,currentTime)
+            
+            $(saveBtn).on("click", function () {
+                // save button
+                var value = $(this).siblings(".description").val()
+                var time = $(this).siblings(".description").attr("id")
+                console.log(time, value)
+                localStorage.setItem(time, value)
+            })
+            
         }
         
     }
