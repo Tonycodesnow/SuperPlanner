@@ -22,27 +22,27 @@ var eventData = [{
     {
         hour: "1",
         daytime: "pm",
-        altHour: 1
+        altHour: 13
     },
     {
         hour: "2",
         daytime: "pm",
-        altHour: 2
+        altHour: 14
     },
     {
         hour: "3",
         daytime: "pm",
-        altHour: 3
+        altHour: 15
     },
     {
         hour: "4",
         daytime: "pm",
-        altHour: 4
+        altHour: 16
     },
     {
         hour: "5",
         daytime: "pm",
-        altHour: 5
+        altHour: 17
     },
 
 ]
@@ -99,9 +99,9 @@ $(document).ready(function () {
     $(".10").val(localStorage.getItem("10"))
     $(".11").val(localStorage.getItem("11"))
     $(".12").val(localStorage.getItem("12"))
-    $(".1").val(localStorage.getItem("1"))
-    $(".2").val(localStorage.getItem("2"))
-    $(".3").val(localStorage.getItem("3"))
-    $(".4").val(localStorage.getItem("4"))
-    $(".5").val(localStorage.getItem("5"))
+    $(".13").val(localStorage.getItem("13"))
+    $(".14").val(localStorage.getItem("14"))
+    $(".15").val(localStorage.getItem("15"))
+    $(".16").val(localStorage.getItem("16"))
+    $(".17").val(localStorage.getItem("17"))
 })
