@@ -7,6 +7,7 @@ the following was used to complete this website...
 -Browser
 -HTML
 -CSS
+-Bootstrap
 -JavaScript
 -JQuery
 -Moment.js
